@@ -1,0 +1,16 @@
+[Unit]
+Description=Desktop File Sender Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/swayam-sahu/Manager
+ExecStart=/home/swayam-sahu/Manager/venv/bin/python3 main.py
+Restart=on-failure
+RestartSec=5
+
+# Pass the standard DBus session bus environment so the DBus screen lock checkers can connect
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+[Install]
+WantedBy=default.target
